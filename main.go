@@ -20,16 +20,17 @@ package main
 // Get more info by read README.md
 
 import (
-	_ "embed"
+	"embed"
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	api "repo.smartsheep.studio/smartsheep/neuralstack-api"
+	"repo.smartsheep.studio/smartsheep/neuralstack-api/utils"
 	"smartsheep.studio/neuralstack/plugins/example/routes"
 )
 
 var (
-	//go:embed views/dist/index.js
-	script string
+	//go:embed views/dist
+	views embed.FS
 )
 
 var Assets = api.PluginAssets{
@@ -39,11 +40,11 @@ var Assets = api.PluginAssets{
 // Manifest for plugin loader, must name be Manifest
 var Manifest = api.Plugin{
 	Name:        "Example",
-	PackageID:   "repo.smartsheep.studio/example/example",
-	Description: "NeuralStack Plugin Boilerplate",
-	Tags:        "Miscellaneous",
-	Version:     "0.0.1",
-	Author:      "You",
+	PackageID:   "repo.smartsheep.studio/example/example", // Plugin Package ID, usually keep it same as your module name.
+	Description: "NeuralStack Plugin Boilerplate",         // Plugin Description
+	Tags:        "Miscellaneous",                          // Plugin Tags, separated by commas
+	Version:     "0.0.1",                                  // Plugin Version, will automatically add "v" prefix when displaying
+	Author:      "You",                                    // Plugin author name
 
 	Assets: &Assets,
 
@@ -51,30 +52,35 @@ var Manifest = api.Plugin{
 	Migrate: Migrate,
 }
 
+// Setup function will call when loading plugin.
+// Usually do mapping routes and read configurations.
 func Setup(p *api.Plugin, router gin.IRouter) {
 	routes.Init(*p, router)
 
 	p.Assets.Apps = []api.WebApp{
 		{
-			RootElement:        "plugins-example",
-			DisplayOnLaunchpad: true,
-			ID:                 "example",
-			Icon:               "mdi-ab-testing",
-			Name:               "Example",
-			Descriptions:       "NeuralStack Example Plugin",
-			WindowOptions: api.WebWindowOptions{
+			RootFile:           "index.html",                 // Root file when no path, generally no need to change
+			DisplayOnLaunchpad: true,                         // Enable display in launchpad
+			ID:                 "example",                    // App ID, if you changed this, make sure you updated the base path in views/vite.config.ts
+			Icon:               "mdi-ab-testing",             // App Logo, display on title and launchpad, support mdi v7 icons(https://materialdesignicons.com)
+			Name:               "Example",                    // App Title and Label display in launchpad
+			Descriptions:       "NeuralStack Example Plugin", // App Description
+			WindowOptions: api.WebWindowOptions{ // App Window Display Options
 				Width:     800,
 				Height:    400,
 				Resizable: true,
 				Closeable: true,
 				Meta:      map[string]any{},
 			},
-			Script:    script,
+			Assets:    utils.EmbedFolder(views, "views/dist"),
 			PackageID: p.PackageID,
 		},
 	}
 }
 
+// Migrate function will call when datasource is ready.
+// Usually do migrate things like auto creating table.
+// Recommended use utils.HandleFatalError to handle error.
 func Migrate(datasource *gorm.DB) {
 
 }

@@ -32,3 +32,11 @@ After that, you can find a `example.plug.so` file in your project root. Move thi
 Boom! The Example App is displayed on your launchpad!
 
 Explore more API details in our knowledge base in the wiki tab of our repository.
+
+## Start Developing
+
+To start developing plugin. You need to read those tips.
+
+1. When you are trying to update something, make sure you have to read the comments in the code.
+2. Look for help on forum before you create an issue.
+3. Explore other plugins source code to learn how to take your plugin to the next level
