@@ -15,7 +15,7 @@ export default defineConfig({
   ],
   // Base URL path, The format is /api/plugins/<Base64 URLSafe-encoded App ID>
   // App ID prefix is plugins. for example: plugins.example - Base64 URLSafe-encode -> cGx1Z2lucy5leGFtcGxl
-  base: "/api/plugins/cGx1Z2lucy5leGFtcGxl",
+  base: "/plugins/cGx1Z2lucy5leGFtcGxl",
   build: {
     rollupOptions: {
       // @ts-ignore
