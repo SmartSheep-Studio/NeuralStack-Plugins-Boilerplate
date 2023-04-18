@@ -64,7 +64,7 @@ func Setup(p *api.Plugin, router gin.IRouter) {
 			ID:                 "example",                    // App ID, if you changed this, make sure you updated the base path in views/vite.config.ts
 			Icon:               "mdi-ab-testing",             // App Logo, display on title and launchpad, support mdi v7 icons(https://materialdesignicons.com)
 			Name:               "Example",                    // App Title and Label display in launchpad
-			Descriptions:       "NeuralStack Example Plugin", // App Description
+			Description:        "NeuralStack Example Plugin", // App Description
 			WindowOptions: api.WebWindowOptions{ // App Window Display Options
 				Width:     800,
 				Height:    400,
