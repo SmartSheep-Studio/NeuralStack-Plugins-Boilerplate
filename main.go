@@ -21,6 +21,8 @@ package main
 
 import (
 	"embed"
+	"encoding/json"
+
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
 	api "repo.smartsheep.studio/smartsheep/neuralstack-api"
@@ -31,6 +33,9 @@ import (
 var (
 	//go:embed views/dist
 	views embed.FS
+
+	//go:embed manifest.json
+	rawManifest []byte
 )
 
 var Assets = api.PluginAssets{
@@ -39,17 +44,15 @@ var Assets = api.PluginAssets{
 
 // Manifest for plugin loader, must name be Manifest
 var Manifest = api.Plugin{
-	Name:        "Example",
-	PackageID:   "repo.smartsheep.studio/example/example", // Plugin Package ID, usually keep it same as your module name.
-	Description: "NeuralStack Plugin Boilerplate",         // Plugin Description
-	Tags:        "Miscellaneous",                          // Plugin Tags, separated by commas
-	Version:     "0.0.1",                                  // Plugin Version, will automatically add "v" prefix when displaying
-	Author:      "You",                                    // Plugin author name
-
 	Assets: &Assets,
 
 	Setup:   Setup,
 	Migrate: Migrate,
+	Init: func(p *api.Plugin) {
+		var manifest api.PluginManifest
+		json.Unmarshal(rawManifest, &manifest)
+		p.Manifest = manifest
+	},
 }
 
 // Setup function will call when loading plugin.
@@ -73,7 +76,7 @@ func Setup(p *api.Plugin, router gin.IRouter) {
 				Meta:      map[string]any{},
 			},
 			Assets:    utils.EmbedFolder(views, "views/dist"),
-			PackageID: p.PackageID,
+			PackageID: p.Manifest.Package,
 		},
 	}
 }

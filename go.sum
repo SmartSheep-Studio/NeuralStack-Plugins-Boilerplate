@@ -624,6 +624,10 @@ honnef.co/go/tools v0.0.1-2020.1.3/go.mod h1:X/FiERA/W4tHapMX5mGpAtMSVEeEUOyHaw9
 honnef.co/go/tools v0.0.1-2020.1.4/go.mod h1:X/FiERA/W4tHapMX5mGpAtMSVEeEUOyHaw9vFzvIQ3k=
 repo.smartsheep.studio/smartsheep/neuralstack-api v0.0.8 h1:SlZ+YjWe2W/kieM7zesPYNKgzm6T5WHJwx6+xe1O5BM=
 repo.smartsheep.studio/smartsheep/neuralstack-api v0.0.8/go.mod h1:4L+urrX+nn+o2JX9IGhseG9Zns4VxXEUKm3aKR1m8jA=
+repo.smartsheep.studio/smartsheep/neuralstack-api v1.0.1-0.20230419071603-9d7970146648 h1:mCLbhGICOGBKGuWS16wj7ZGWI/pk71EpWOpN54pba+g=
+repo.smartsheep.studio/smartsheep/neuralstack-api v1.0.1-0.20230419071603-9d7970146648/go.mod h1:4L+urrX+nn+o2JX9IGhseG9Zns4VxXEUKm3aKR1m8jA=
+repo.smartsheep.studio/smartsheep/neuralstack-api v1.1.0 h1:GyND9uAcowXcSC7zUD01Ejr4AoIMxn1oM7jbkW1gRaE=
+repo.smartsheep.studio/smartsheep/neuralstack-api v1.1.0/go.mod h1:4L+urrX+nn+o2JX9IGhseG9Zns4VxXEUKm3aKR1m8jA=
 rsc.io/binaryregexp v0.2.0/go.mod h1:qTv7/COck+e2FymRvadv62gMdZztPaShugOCi3I+8D8=
 rsc.io/pdf v0.1.1/go.mod h1:n8OzWcQ6Sp37PL01nO98y4iUCRdTGarVfzxY20ICaU4=
 rsc.io/quote/v3 v3.1.0/go.mod h1:yEA65RcK8LyAZtP9Kv3t0HmxON59tX3rD+tICJqUlj0=

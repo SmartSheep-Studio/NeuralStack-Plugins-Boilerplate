@@ -1,0 +1,17 @@
+{
+    "$schema": "https://repo.smartsheep.studio/SmartSheep/NeuralStack-API/raw/branch/master/manifest.schema.json",
+    "name": "Example",
+    "version": "0.0.1",
+    "package": "repo.smartsheep.studio/example/example",
+    "repository": "https://repo.smartsheep.studio/example/example",
+    "description": "Example plugin",
+    "authors": ["SmartSheep Studio"],
+    "installer": {
+      "scripts": [
+        "go build -buildmode=plugin -o ./example.plug.so ."
+      ],
+      "output": "example.plug.so"
+    },
+    "dependencies": []
+  }
+  

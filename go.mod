@@ -7,7 +7,7 @@ require (
 	github.com/spf13/viper v1.15.0
 	golang.org/x/exp v0.0.0-20230321023759-10a507213a29
 	gorm.io/gorm v1.25.0
-	repo.smartsheep.studio/smartsheep/neuralstack-api v0.0.8
+	repo.smartsheep.studio/smartsheep/neuralstack-api v1.1.0
 )
 
 require (
